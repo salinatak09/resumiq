@@ -8,11 +8,11 @@ export async function extractPdfText(
   }  
   
   // pdfjs-dist expects browser DOM globals.
-  if (typeof globalThis.DOMMatrix === "undefined") {
-    const { DOMMatrix } = await import("@napi-rs/canvas");
-    // @ts-expect-error DOMMatrix is provided by the canvas implementation
-    globalThis.DOMMatrix = DOMMatrix;
-  }
+  // if (typeof globalThis.DOMMatrix === "undefined") {
+  //   const { DOMMatrix } = await import("@napi-rs/canvas");
+  //   // @ts-expect-error DOMMatrix is provided by the canvas implementation
+  //   globalThis.DOMMatrix = DOMMatrix;
+  // }
 
   const { PDFParse } = await import("pdf-parse");
   const parser = new PDFParse({data});
